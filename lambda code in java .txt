@@ -1,0 +1,38 @@
+
+1.
+@FunctionalInterface 
+
+interface Drawable{  
+    public void draw();  
+}  
+  
+public class B {  
+
+public static void main(String[] args) {  
+ int length=20;  
+            
+ Drawable D1=()->{  
+ System.out.println(length);  
+        };  
+        D1.draw();  
+    }  
+}  
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2.
+@FunctionalInterface 
+public interface rectangle {
+	
+	int calcArea(int w, int h);
+}
+
+public static void main(String [] args) {
+
+	rectangle r = (w, h)->w * h;
+
+}
