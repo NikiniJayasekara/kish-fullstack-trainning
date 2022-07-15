@@ -1,0 +1,91 @@
+
+package Drive;
+
+ class  ReversedLinkedList {
+ private Node head;
+
+  ReversedLinkedList () {
+        head = null;
+    }
+
+  
+ static class Node {
+        String Data;
+        Node next;
+
+        Node(String Data) {
+            this.Data = Data;
+            this.next = null;
+        }
+
+       public void print() {
+            System.out.print(" " + Data);
+        
+    }}
+    
+
+    public void addItem(Node node) {
+        if (head == null) {
+            head = node;
+        } 
+        else {
+            Node current = head;
+           
+            while (current.next != null) {
+                current = current.next;
+            }
+           
+            current.next = node;
+        }
+    }
+
+    public void reverseLinkedList() {
+        Node prev= null;
+        Node current = head;
+        Node next;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+             prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+
+    public void PrintList() {
+        
+        Node current = head;
+        while (current != null) {
+            current.print();
+            current = current.next;
+        }
+    }
+
+   }
+public class Drive {
+
+    public static void main(String[] args) {
+        
+
+       ReversedLinkedList List = new ReversedLinkedList();
+        List.addItem(new ReversedLinkedList.Node("A"));
+        List.addItem(new ReversedLinkedList.Node("B"));
+        List.addItem(new ReversedLinkedList.Node("C"));
+        List.addItem(new ReversedLinkedList.Node("D"));
+        List.addItem(new ReversedLinkedList.Node("E"));
+        List.addItem(new ReversedLinkedList.Node("F"));
+        List.addItem(new ReversedLinkedList.Node("G"));
+        List.addItem(new ReversedLinkedList.Node("H"));
+        List.addItem(new ReversedLinkedList.Node("I"));
+        List.addItem(new ReversedLinkedList.Node("J"));
+        List.addItem(new ReversedLinkedList.Node("K"));
+        List.addItem(new ReversedLinkedList.Node("L"));
+        
+        System.out.println("Given Linked list.");
+        List.PrintList();
+        System.out.println("\n Reversed Linked List.");
+        List.reverseLinkedList();
+        List.PrintList();
+    }
+    
+}

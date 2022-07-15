@@ -1,0 +1,109 @@
+package tester;
+
+class PalindromeLinkedList {
+    
+     private Node headElement;
+
+    PalindromeLinkedList() {
+        headElement = null;
+    }
+  static class Node {
+        int Data;
+        Node next;
+
+        Node(int Data) {
+            this.Data = Data;
+            this.next = null;
+        }
+
+        public void print() {
+            System.out.print(" " + Data);
+        }
+    }
+  
+    public void addItem(Node node) {
+        if (headElement == null) {
+            headElement = node;
+        } else {
+            Node current = headElement;
+            
+            while (current.next != null) {
+                current = current.next;
+            }
+            
+            current.next = node;
+        }
+    }
+
+    public static Node reverseLinkedList(Node currentNode) {
+        Node previousNode = null;
+        Node nextNode;
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+        return previousNode;
+    }
+
+    public static Node findMiddleNode(Node head) {
+        Node slowPointer, fastPointer;
+        slowPointer = fastPointer = head;
+
+        while (fastPointer != null) {
+            fastPointer = fastPointer.next;
+            if (fastPointer != null && fastPointer.next != null) {
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next;
+            }
+        }
+        return slowPointer;
+    }
+
+    public static boolean checkPalindrome(Node head) {
+       
+        Node middleNode = findMiddleNode(head);
+        Node secondHead = middleNode.next;
+        middleNode.next = null;
+        Node reverseSecondHead = reverseLinkedList(secondHead);
+
+        while (head != null && reverseSecondHead != null) {
+            if (head.Data == reverseSecondHead.Data) {
+                head = head.next;
+                reverseSecondHead = reverseSecondHead.next;
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void PrintList() {
+        Node current = headElement;
+        while (current != null) {
+            current.print();
+            current = current.next;
+        }
+    }
+
+   
+}
+
+
+public class Tester {
+
+   
+    public static void main(String[] args) {
+        PalindromeLinkedList List = new PalindromeLinkedList();
+        PalindromeLinkedList.Node headElement = new PalindromeLinkedList.Node(1);
+        List.addItem(headElement);
+        List.addItem(new PalindromeLinkedList.Node(0));
+        List.addItem(new PalindromeLinkedList.Node(0));
+        List.addItem(new PalindromeLinkedList.Node(1));
+        List.PrintList();
+        System.out.println("\n" + PalindromeLinkedList.checkPalindrome(headElement));
+    }
+    
+}
