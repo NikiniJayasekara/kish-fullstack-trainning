@@ -1,0 +1,103 @@
+//Adapterpattern.java -main class
+package adapterpattern;
+
+public class Adapterpattern  {
+
+
+
+ public static void main(String args[]){  
+ UnivercityId t1 =   new UnivercityStudent();  
+ t1.giveMangementsystemDetails();  
+  System.out.print(t1.getUnivercityId());  
+ } 
+}
+
+// ManagementSystemDetails.java
+package adapterpattern;
+
+public class MangementsystemDetails {
+    
+    private String StudentName;  
+    private String IndexNo;
+    private String NIC;  
+      
+    public String getStudentName() {  
+        return StudentName;  
+    }  
+    public void setStudentName(String StudentName){
+        this.StudentName = StudentName;  
+    }  
+    public String getIndexNo() {  
+        return IndexNo;  
+    }
+    
+    public void setIndexNo(String IndexNo){
+        this.IndexNo=IndexNo;
+    }
+    
+    
+    public String getNIC() {
+        return NIC;
+    }  
+    
+    public void setNIC(String NIC){
+        this.NIC=NIC;
+    } 
+    
+}
+
+
+// UnivercityId.java
+
+
+package adapterpattern;
+
+
+public interface UnivercityId {  
+    public void giveMangementsystemDetails();
+    public String getUnivercityId();  
+}
+
+//UnivercityStudent.java
+
+package adapterpattern;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+
+public class UnivercityStudent extends MangementsystemDetails  implements UnivercityId{
+    
+public void giveMangementsystemDetails(){  
+  try{  
+   BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
+      
+   System.out.print("Enter the Student name :");  
+   String StudentName=br.readLine();  
+
+      
+   System.out.print("Enter theindex number:");  
+String IndexNo=br.readLine(); 
+  
+      
+   System.out.print("Enter the Nic number :");  
+   String NIC = br.readLine();  
+      
+   setStudentName(StudentName);  
+   setIndexNo(IndexNo);  
+   setNIC(NIC);  
+   
+   }catch(Exception e){  
+        e.printStackTrace();  
+   }  
+  }  
+  
+ public String getUnivercityId() {  
+  String StudentName=  getStudentName();
+   String IndexNo=  getIndexNo();  
+   String NIC=  getNIC()  ;
+          
+   return ("StudentName:" +StudentName+   "\t"   +  "and Index NO :"  + IndexNo + "  " + "NIC NO:"+   NIC +" " +" are  valid and authenticated for issuing the StudentId ");  
+  }  
+}
+

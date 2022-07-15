@@ -1,0 +1,46 @@
+// singletone design pattern
+
+package singletonpattern;
+
+class SingleObject {
+    
+ private static SingleObject  object;  
+ private SingleObject(){}  
+   
+ public static SingleObject getSingleObject(){  
+   if (object == null){  
+      synchronized(SingleObject.class){  
+        if (object == null){  
+            object = new SingleObject();//instance will be created at request time  
+        }  
+    }              
+    }  
+  return object;  
+ }  
+  
+ public void doSomething(){  
+    int x=5;
+    int y=9;
+    int sum=x+y;
+   System.out.println("sum is "+sum);
+ }  
+}  
+
+// main class
+
+package singletonpattern;
+
+
+public class SingletonPattern{
+
+    public static void main(String[] args) {
+          SingleObject object = SingleObject.getSingleObject();
+
+      
+      object.doSomething();
+    }
+    
+}
+
+
+

@@ -1,0 +1,94 @@
+// studentDemo.java
+
+package studentdemo;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import java.io.IOException; 
+public class StudentDemo {
+
+   
+    public static void main(String[] args) throws IOException {
+       
+         BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+         
+        System.out.print("Enter Student Id: ");  
+        int sid=Integer.parseInt(br.readLine());  
+       //uiSystem.out.print("\n");  
+          
+        System.out.print("Enter Student Name: ");  
+        String sname=br.readLine();  
+       // System.out.print("\n");  
+       
+          
+        System.out.print("Enter Student Address: ");  
+        String saddress=br.readLine();  
+       // System.out.print("\n");  
+          
+        
+     StudentRecord  s1 = new StudentRecord(sid,sname,saddress);  
+          
+        s1.showStudentRecord();  
+        System.out.println("\n");  
+      StudentRecord  e2=(StudentRecord) s1.getClone();  
+        e2.showStudentRecord();  
+        
+        
+        
+        
+    }
+    
+}
+
+
+// StudentRecord.java
+package studentdemo;
+
+/**
+ *
+ * @author Acer
+ */
+public class StudentRecord implements StudentPrototype {
+   
+   private int Studentid;  
+   private String name;
+   private String address;  
+ 
+      
+   public StudentRecord(){  
+            System.out.println(" Student records for competition ");  
+              
+            System.out.println("Sid"+"\t"+"Sname"+"\t\t"+"Saddress");  
+      
+}  
+  
+ public StudentRecord(int Studentid, String name, String address) {  
+          
+        this();  
+        this.Studentid = Studentid;  
+        this.name = name;  
+        this.address = address;  
+    }  
+      
+  public void showStudentRecord(){  
+          
+        System.out.println(Studentid+"\t"+name+"\t\t"+address);  
+   }  
+  
+ 
+    public StudentPrototype getClone() {  
+          
+        return new StudentRecord(Studentid,name,address);  
+    }  
+}
+
+//StudentPrototype.java
+
+package studentdemo;
+
+interface StudentPrototype {
+     public  StudentPrototype getClone();  
+}
+
+ 
