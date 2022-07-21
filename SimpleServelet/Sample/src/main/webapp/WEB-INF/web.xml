@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF=8"?>
+<web-app>
+	<servlet>
+		<servlet-name>LifeCycleServlet</servlet-name>
+		<servlet-class>Sample</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LifeCycleServlet</servlet-name>
+		<url-pattern>/LifeCycleServlet</url-pattern>
+	</servlet-mapping>
+</web-app>
