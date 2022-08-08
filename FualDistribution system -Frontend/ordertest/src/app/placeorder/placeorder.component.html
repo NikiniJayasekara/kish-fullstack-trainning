@@ -1,0 +1,36 @@
+<h1>FUAL Management System</h1>
+
+<div>
+  <form #orderForm="ngForm" (ngSubmit)="submitOrderCreate(orderForm.value)">
+    <label>StationName</label>
+    <input type="text" name="name" ngModel/>
+      
+      <label>ID</label>
+      <input type="text" name="Id" ngModel/>
+
+      <label>FualType</label>
+      <select name="fualType" id="fualType" ngModel>
+          <option value="Petrol 92" selected>Petrol 92</option>
+          <option value="Petrol 95">Petrol 95</option>
+          <option value="Super Diesel">Super Diesel</option>
+          <option value="Diesel">Diesel</option>
+      </select>
+   
+
+
+      <label>FualCapacity</label>
+          <select name="capacity" id="capacity" ngModel>
+          <option value="33000">33000L</option>
+          <option value="13200">13200L</option>
+          <option value="6600" selected>6600L</option>
+          </select>
+
+          <button>submit</button>
+          <br>     <br>
+
+          
+          <button>CheckStatus</button>
+  </form>
+</div>
+
+
